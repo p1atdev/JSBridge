@@ -11,6 +11,8 @@
 		3AA455322866DED400CA62AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA455312866DED400CA62AC /* ContentView.swift */; };
 		3AA455342866DED600CA62AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA455332866DED600CA62AC /* Assets.xcassets */; };
 		3AA455382866DED600CA62AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA455372866DED600CA62AC /* Preview Assets.xcassets */; };
+		3AA455422866E49900CA62AC /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA455412866E49900CA62AC /* JSBridge.swift */; };
+		3AA455462866F0D600CA62AC /* Bridge.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AA455452866F0D600CA62AC /* Bridge.bundle.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		3AA455332866DED600CA62AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AA455352866DED600CA62AC /* JSBridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JSBridge.entitlements; sourceTree = "<group>"; };
 		3AA455372866DED600CA62AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AA455412866E49900CA62AC /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
+		3AA455452866F0D600CA62AC /* Bridge.bundle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Bridge.bundle.js; path = JS/dist/Bridge.bundle.js; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				3AA4552F2866DED400CA62AC /* JSBridgeApp.swift */,
 				3AA455312866DED400CA62AC /* ContentView.swift */,
+				3AA455412866E49900CA62AC /* JSBridge.swift */,
+				3AA4553E2866DF6900CA62AC /* JS */,
 				3AA455332866DED600CA62AC /* Assets.xcassets */,
 				3AA455352866DED600CA62AC /* JSBridge.entitlements */,
 				3AA455362866DED600CA62AC /* Preview Content */,
@@ -67,6 +73,14 @@
 				3AA455372866DED600CA62AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3AA4553E2866DF6900CA62AC /* JS */ = {
+			isa = PBXGroup;
+			children = (
+				3AA455452866F0D600CA62AC /* Bridge.bundle.js */,
+			);
+			path = JS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA455462866F0D600CA62AC /* Bridge.bundle.js in Resources */,
 				3AA455382866DED600CA62AC /* Preview Assets.xcassets in Resources */,
 				3AA455342866DED600CA62AC /* Assets.xcassets in Resources */,
 			);
@@ -140,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA455322866DED400CA62AC /* ContentView.swift in Sources */,
+				3AA455422866E49900CA62AC /* JSBridge.swift in Sources */,
 				3AA455302866DED400CA62AC /* JSBridgeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
