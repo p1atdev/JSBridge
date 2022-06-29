@@ -49,7 +49,7 @@ struct ContentView: View {
         withAnimation {
             numbers = []
             
-            (0..<Int.random(in: 1..<10)).forEach { num in
+            (1..<Int.random(in: 1..<10)).forEach { num in
                 numbers.append(Int.random(in: 1..<10))
             }
         }

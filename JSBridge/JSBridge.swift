@@ -17,7 +17,7 @@ class JSBridge: ObservableObject {
     @Published var message = ""
     
     init() {
-        let js = JSBridge.loadJSFile(fileName: "Bridge.bundle") // 拡張子jsはあとでつけるので含めない(swiftちょっとキモい)
+        let js = loadJSFile(fileName: "Bridge.bundle") // 拡張子jsはあとでつけるので含めない(swiftちょっとキモい)
         
         self.context = JSContext(virtualMachine: self.vm)
         
@@ -27,20 +27,14 @@ class JSBridge: ObservableObject {
         self.injectFunction()
     }
     
-    private static func loadJSFile(fileName: String) -> String? {
-        // JSファイルを読み込む
-        // ディレクトリとかは気にしなくていい
-        let text = try? String(contentsOf: Bundle.main.url(forResource: fileName, withExtension: "js")!)
-        
-        return text
-    }
-    
     private func injectFunction() {
         // JS側から呼び出せる関数を登録する
         // blockが何者なのかはよくわからないので誰か教えてください
         let sendMessage: @convention(block) (String) -> Void = { message in
-            self.message = message
-            NSLog("Message from JS: \(message)")
+            DispatchQueue.main.async {
+                self.message = message
+                NSLog("Message from JS: \(message)")
+            }
         }
         
         // sendMessage という名前で登録
@@ -69,4 +63,12 @@ class JSBridge: ObservableObject {
         }
     }
     
+}
+
+private func loadJSFile(fileName: String) -> String? {
+    // JSファイルを読み込む
+    // ディレクトリとかは気にしなくていい
+    let text = try? String(contentsOf: Bundle.main.url(forResource: fileName, withExtension: "js")!)
+    
+    return text
 }
