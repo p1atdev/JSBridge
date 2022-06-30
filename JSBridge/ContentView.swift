@@ -14,6 +14,8 @@ struct ContentView: View {
     @State var numbers: [Int] = []
     @State var sum: Int = 0
     
+    @State var time: String = "-"
+    
     var body: some View {
         VStack(spacing: 20) {
             
@@ -42,25 +44,31 @@ struct ContentView: View {
             
             Text("メッセージ: \(bridge.message)")
             
+            Text("実行時間: \(time) ms")
+            
         }
     }
     
     func generateRandomNums() {
-        withAnimation {
-            numbers = []
-            
-            (1..<Int.random(in: 1..<10)).forEach { num in
-                numbers.append(Int.random(in: 1..<10))
-            }
+        
+        numbers = []
+        
+        (0..<Int.random(in: 1..<10)).forEach { num in
+            numbers.append(Int.random(in: 1..<10))
         }
+        
     }
     
     func calcSum() {
-        bridge.calcSum(numbers: numbers) { sum in
-            withAnimation {
-                self.sum = sum
-            }
-        }
+        let startTime = Date()
+        
+        self.sum = bridge.calcSum(numbers: numbers)
+        
+        let endTime = Date()
+        
+        let timeElapsed = endTime.timeIntervalSince(startTime)
+        
+        time = String(floor(Double(timeElapsed * 100000)) / 100)
     }
 }
 

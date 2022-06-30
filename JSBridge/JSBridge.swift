@@ -41,27 +41,23 @@ class JSBridge: ObservableObject {
         self.context.setObject(sendMessage, forKeyedSubscript: "sendMessage" as NSString)
     }
     
-    
-    func calcSum(numbers: [Int], completion: @escaping (_ sum: Int) -> Void){
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            var sum = 0
-            let module = self.context.objectForKeyedSubscript("Bridge") // webpack.config.jsで指定したもの
-            let bridge = module?.objectForKeyedSubscript("Bridge") // 自分で書いたクラス名
-            
-            // Bridgeクラスのsumという関数を呼び出す
-            // 引数にnumbersを渡す
-            if let result = bridge?.objectForKeyedSubscript("sum").call(withArguments: [numbers]) {
-                // JSValueからInt32に変換して、Intにする
-                sum = Int(result.toInt32())
-            }
-            
-            DispatchQueue.main.async {
-                // 完了
-                completion(sum)
-            }
+    func calcSum(numbers: [Int]) -> Int {
+        var sum = 0
+        let module = self.context.objectForKeyedSubscript("Bridge") // webpack.config.jsで指定したもの
+        let bridge = module?.objectForKeyedSubscript("Bridge") // 自分で書いたクラス名
+        
+        // Bridgeクラスのsumという関数を呼び出す
+        // 引数にnumbersを渡す
+        if let result = bridge?.objectForKeyedSubscript("sum").call(withArguments: [numbers]) {
+            // JSValueからInt32に変換して、Intにする
+            sum = Int(result.toInt32())
         }
+        
+        
+        // 完了
+        return sum
     }
+    
     
 }
 
