@@ -2,7 +2,7 @@
 
 This is an example of calling NPM package (and js) from Swift JavaScriptCore.
 
-Japanese explanation: [TODO]
+Japanese explanation: [NPM パッケージを Swift から呼び出す | Zenn](https://zenn.dev/platina/articles/1e4316e3f632b6)
 
 ## References
 
